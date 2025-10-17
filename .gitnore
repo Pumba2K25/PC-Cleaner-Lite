@@ -1,0 +1,17 @@
+# Logs and local runs
+*.log
+*.ps1.psm1.psd1.tmp
+*.ps1~*
+*.ps1.save
+*.zip
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+.history/
+
+# PowerShell transcripts
+Transcripts/
