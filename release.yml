@@ -1,0 +1,22 @@
+name: release
+on:
+  push:
+    tags: ["v*"]
+jobs:
+  zip:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create ZIP
+        run: |
+          mkdir package
+          copy SpeedBoost.ps1 package\
+          copy Install-SpeedBoostTask.ps1 package\
+          copy KeepList.txt package\
+          copy README.md package\
+          copy LICENSE package\
+          powershell -NoProfile -Command "Compress-Archive -Path package\* -DestinationPath PC-Cleaner-Lite.zip"
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: PC-Cleaner-Lite.zip
